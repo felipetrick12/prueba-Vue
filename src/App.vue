@@ -6,7 +6,7 @@
       <div class='row '>
         <div class="containerHeader">
         
-        <CreateTodo class="col-6 mt-1 " :create-todo="createTodo"></CreateTodo>
+        <create-todo class="col-6 mt-1 " v-on:create-todo="createTodo"></create-todo>
         
           <div class="parrafos">
               <p class="tasks">Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}} </p>
@@ -16,10 +16,11 @@
          
         </div>
         
-        <hr/>
         <div class="row p-0">
-          <TodoList class="col-md-12 mt-1 p-0 " :todos="todos"></TodoList>
+          <todo-list class="col-md-12 mt-1 p-0 " v-bind:todos="todos"></todo-list>
         </div>
+
+        <hr/>
       </div>
     
   </div>
@@ -29,6 +30,8 @@
 import sweetalert from 'sweetalert';
 import TodoList from './components/TodoList';
 import CreateTodo from './components/CreateTodo';
+
+
 
 export default {
   name: 'app',
@@ -63,6 +66,7 @@ export default {
       sweetalert('Success!', 'To-Do created!', 'success');
     },
   },
+  
 };
 </script>
 
@@ -118,10 +122,5 @@ export default {
         text-align: center;
         font-family: Georgia, 'Times New Roman', Times, serif;
       }
-
-  
-
-      
-
 
 </style>

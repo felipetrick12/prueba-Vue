@@ -1,7 +1,7 @@
 <template>
 
     <div class="row ">
-    <Todo class="col-md-6 col-sm-6" :delete-todo="deleteTodo" :key="todo" :complete-todo="completeTodo" v-for="todo in todos" :todo="todo"></Todo>
+    <Todo class="col-md-6 col-sm-6" v-on:delete-todo="deleteTodo" :key="todo.id" v-on:complete-todo="completeTodo" v-for="todo in todos" v-bind:todo="todo"></Todo>
     </div>
   
   
