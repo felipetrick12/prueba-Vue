@@ -1,43 +1,24 @@
 <template>
   <div id="app" class="container">
     
-    <h1 >Website Todo </h1>
-  
-      <div class='row '>
-        <div class="containerHeader">
-        
-        <create-todo class="col-6 mt-1 " v-on:create-todo="createTodo"></create-todo>
-        
-          <div class="parrafos">
-              <p class="tasks">Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}} </p>
-              <p class="tasks">Pending Tasks:  {{todos.filter(todo => {return todo.done === false}).length}}</p>
-              
-          </div>
-         
+    
+        <div class="row">
+        <CardList class="container p-0" />
         </div>
-        
-        <div class="row p-0">
-          <todo-list class="col-md-12 mt-1 p-0 " v-bind:todos="todos"></todo-list>
-        </div>
-
-        <hr/>
-      </div>
+      
     
   </div>
 </template>
 
 <script>
 import sweetalert from 'sweetalert';
-import TodoList from './components/TodoList';
-import CreateTodo from './components/CreateTodo';
-
+import CardList from './components/CardList';
 
 
 export default {
   name: 'app',
   components: {
-    TodoList,
-    CreateTodo,
+    CardList,
   },
   data() {
     return {
@@ -58,11 +39,13 @@ export default {
         project: 'Project D',
         done: false,
       }],
+      isShow:false,
     };
   },
   methods: {
     createTodo(newTodo) {
       this.todos.push(newTodo);
+   
       sweetalert('Success!', 'To-Do created!', 'success');
     },
   },
@@ -70,23 +53,19 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss" >
 
-    html {
-    box-sizing: border-box;
-    height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+   
 
     body {
     min-height: 100%;
     font-size: 16px; 
     font-size: 1.6rem;
     background-color: rgb(38, 38, 90);
+     font-family: Georgia;
     }
     .container {
-      padding: 3rem;
-      
+      padding: 2rem;
     }
      .container h1 {
       text-align: center;
@@ -95,10 +74,12 @@ export default {
       border-radius:1px;
       border-radius: 5px;
       padding:1.5rem;
+      font-weight: bold;
+      font-size:2.0em;
     }
 
     .row {
-        margin: 0;
+        margin: 0 ;
         margin-bottom: 3%;
         border-radius: 25px;
         background-color: rgb(233, 243, 248);
@@ -108,19 +89,38 @@ export default {
       hr {
         background-color:#0c3ad3;
       }
-    .containerHeader{
-      display:flex
-    }
-
-    .parrafos{
-      text-align: center;
-      width:100%;
-    }
-     p.tasks {
-       text-align: center;
-        margin-top: 5%;
+      
+     .card-body  {
+        background-color: #878b9769;
+        color: #fff;
         text-align: center;
-        font-family: Georgia, 'Times New Roman', Times, serif;
+        border-radius:5px;
       }
+      .completo {
+          padding: 2%;
+          font-size: 13px;
+          float: right;
+          background-color: rgba(154, 252, 154, .3);
+          color: #FFF;
+      }
+
+      .incompleto{
+          padding: 2%;
+          font-size: 13px;
+          float: right;
+          background-color: rgba(250, 126, 126, 0.4);
+         color: #FFF;
+      }
+
+      h5 {
+        font-size: 1.3em;
+      }
+
+      ul {
+        font-size:18px;
+        color:black;
+      }
+
+   
 
 </style>
