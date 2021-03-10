@@ -1,28 +1,127 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    
+    <h1 >Website Todo </h1>
+  
+      <div class='row '>
+        <div class="containerHeader">
+        
+        <CreateTodo class="col-6 mt-1 " :create-todo="createTodo"></CreateTodo>
+        
+          <div class="parrafos">
+              <p class="tasks">Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}} </p>
+              <p class="tasks">Pending Tasks:  {{todos.filter(todo => {return todo.done === false}).length}}</p>
+              
+          </div>
+         
+        </div>
+        
+        <hr/>
+        <div class="row p-0">
+          <TodoList class="col-md-12 mt-1 p-0 " :todos="todos"></TodoList>
+        </div>
+      </div>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import sweetalert from 'sweetalert';
+import TodoList from './components/TodoList';
+import CreateTodo from './components/CreateTodo';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    TodoList,
+    CreateTodo,
+  },
+  data() {
+    return {
+      todos: [{
+        title: 'Todo A',
+        project: 'Project A',
+        done: false,
+      }, {
+        title: 'Todo B',
+        project: 'Project B',
+        done: true,
+      }, {
+        title: 'Todo C',
+        project: 'Project C',
+        done: false,
+      }, {
+        title: 'Todo D',
+        project: 'Project D',
+        done: false,
+      }],
+    };
+  },
+  methods: {
+    createTodo(newTodo) {
+      this.todos.push(newTodo);
+      sweetalert('Success!', 'To-Do created!', 'success');
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style >
+
+    html {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+    min-height: 100%;
+    font-size: 16px; 
+    font-size: 1.6rem;
+    background-color: rgb(38, 38, 90);
+    }
+    .container {
+      padding: 3rem;
+      
+    }
+     .container h1 {
+      text-align: center;
+      background-color: rgb(67, 28, 209);
+      color: white;
+      border-radius:1px;
+      border-radius: 5px;
+      padding:1.5rem;
+    }
+
+    .row {
+        margin: 0;
+        margin-bottom: 3%;
+        border-radius: 25px;
+        background-color: rgb(233, 243, 248);
+        overflow: hidden;
+        border: 2px solid 0c3ad3;
+      }
+      hr {
+        background-color:#0c3ad3;
+      }
+    .containerHeader{
+      display:flex
+    }
+
+    .parrafos{
+      text-align: center;
+      width:100%;
+    }
+     p.tasks {
+       text-align: center;
+        margin-top: 5%;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+
+  
+
+      
+
+
 </style>
