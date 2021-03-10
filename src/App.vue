@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import sweetalert from 'sweetalert';
 import CardList from './components/CardList';
 
 
@@ -19,41 +18,12 @@ export default {
   name: 'app',
   components: {
     CardList,
-  },
-  data() {
-    return {
-      todos: [{
-        title: 'Todo A',
-        project: 'Project A',
-        done: false,
-      }, {
-        title: 'Todo B',
-        project: 'Project B',
-        done: true,
-      }, {
-        title: 'Todo C',
-        project: 'Project C',
-        done: false,
-      }, {
-        title: 'Todo D',
-        project: 'Project D',
-        done: false,
-      }],
-      isShow:false,
-    };
-  },
-  methods: {
-    createTodo(newTodo) {
-      this.todos.push(newTodo);
-   
-      sweetalert('Success!', 'To-Do created!', 'success');
-    },
-  },
+  }
   
 };
 </script>
 
-<style lang="scss" >
+<style  >
 
    
 
@@ -61,7 +31,7 @@ export default {
     min-height: 100%;
     font-size: 16px; 
     font-size: 1.6rem;
-    background-color: rgb(38, 38, 90);
+    background-color: rgb(32, 32, 88);
      font-family: Georgia;
     }
     .container {
@@ -80,7 +50,7 @@ export default {
 
     .row {
         margin: 0 ;
-        margin-bottom: 3%;
+        margin-bottom: 5%;
         border-radius: 25px;
         background-color: rgb(233, 243, 248);
         overflow: hidden;
@@ -119,6 +89,12 @@ export default {
       ul {
         font-size:18px;
         color:black;
+      }
+
+      .sombra {
+        -webkit-box-shadow: 0px 4px 10px -3px rgb(223, 119, 22);
+        -moz-box-shadow: 0px 4px 10px -3px rgb(216, 165, 25);
+        box-shadow: 0px 4px 10px -3px rgb(184, 97, 17);
       }
 
    

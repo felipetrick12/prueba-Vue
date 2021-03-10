@@ -1,10 +1,10 @@
 <template>
-  <div class="row">
+  <div class="row ">
    
     <h1>Cards</h1>
     <div class="col-md-6 col-sm-6" v-for='gettercard in getterscard' :key='gettercard.id'  > 
             
-            <div class="card-body mt-2" >
+            <div class="card-body mt-2 sombra" >
            
             <h5 class="card-title">{{gettercard.name}}
                 <span v-bind:class="[gettercard.isCompleted ? 'completo' : 'incompleto']"> 
